@@ -55,22 +55,34 @@
     .shadow-custom {
         box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.5);
     }
+
+        .shopping-cart::-webkit-scrollbar {
+            width: 1rem;
+        }
+    
+        .shopping-cart::-webkit-scrollbar-track {
+            background: #fff;
+        }
+    
+        .shopping-cart::-webkit-scrollbar-thumb {
+            background: #244d4d;
+        }
        
+                 .closer {
+                     position: fixed;
+                     top: 1.5rem;
+                     right: 2rem;
+                     font-size: 5rem;
+                     cursor: pointer;
+                     z-index: 10000;
+                     color: #244d4d;
+                     -webkit-animation: rotate .4s linear .4s backwards;
+                     animation: rotate .4s linear .4s backwards;
+        
+                 }
+        
+                 .closer:hover {
+                     color: #779;
+                 }
 }
 
- .closer {
-     position: fixed;
-     top: 1.5rem;
-     right: 2rem;
-     font-size: 5rem;
-     cursor: pointer;
-     z-index: 10000;
-     color: #244d4d;
-     -webkit-animation: rotate .4s linear .4s backwards;
-     animation: rotate .4s linear .4s backwards;
-    
- }
-
- .closer:hover {
-     color: #779;
- }

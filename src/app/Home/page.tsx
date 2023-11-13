@@ -8,66 +8,95 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import Navbar from '@/components/Navbar'
+import Cart from '@/components/Cart'
 import Link from "next/link"
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 
 
 const Header = () => {
-  const [closerVisible, setCloserVisisble] = useState(true)
-  const [navbarVisible, setNavbarVisible] = useState(true);
+  const [closerVisible, setCloserVisible] = useState(false)
+  const [navbarVisible, setNavbarVisible] = useState(false);
+  const [cartVisible, setCartVisible] = useState(false);
 
 
   const handleCloser = () => {
-    setCloserVisisble(!closerVisible);
+    setNavbarVisible(false);
+    setCartVisible(false);
+    setCloserVisible(false); // Hide the close icon
+  };
+
+  const handleBarsIconClick = () => {
     setNavbarVisible(!navbarVisible);
-  }
+    setCartVisible(false);
+    setCloserVisible(true); // Show the close icon
+  };
+
+  const handleCartIconClick = () => {
+    setNavbarVisible(false);
+    setCartVisible(!cartVisible);
+    setCloserVisible(true); // Show the close icon
+  };
 
   return (
     <>
       <header className=" sticky top-0 left-0 right-0 z-100 flex items-center justify-between gap-10 py-[2rem] px-[9%] bg-[#F6FBF6]">
 
-        <Link href="/" className='text-[1.5rem] font-extrabold text-[#244d4d] flex items-center '>
-          <FontAwesomeIcon icon={faLightbulb} height={25} className='pr-[0.3rem]' />Furni
-        </Link>
+        <motion.div initial={{ x: -220 }} animate={{ x: 0 }} transition={{ duration: .3 }} >
+          <Link href="/" className='text-[1.5rem] font-extrabold text-[#244d4d] flex items-center '>
+            <FontAwesomeIcon icon={faLightbulb} height={25} className='pr-[0.3rem]' />Furni
+          </Link>
+        </motion.div>
 
-        <form action="" className='hidden md:flex w-[35rem] h-[3rem] rounded-[5rem] bg-white overflow-hidden  items-center border-[0.1rem] border-solid border-[#244d4d]'>
+
+        <motion.form initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: .4 }} action="" className='hidden md:flex w-[35rem] h-[3rem] rounded-[5rem] bg-white overflow-hidden  items-center border-[0.1rem] border-solid border-[#244d4d]'>
           <input type="text" placeholder='search here...' id='search here' className='w-full h-full py-0 px-[1.2rem] text-[1rem] text-[#244d4d] normal-case' />
           <label htmlFor="search-box" className='text-[1.2rem] pr-[1.7rem] cursor-pointer text-teal-700 hover:text-[#779]'> <FontAwesomeIcon icon={faSearch} width={30} /></label>
 
-        </form>
+        </motion.form>
 
-        <div className='flex' >
+        <motion.div initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: .5 }} className='flex items-center justify-between' >
 
-          <div>
-            <button type='button' className='ml-[2rem] text-[2.5rem] cursor-pointer text-teal-700 hover:text-[#779] ' onClick={handleCloser}>
+          <div >
+            <button type='button' className='ml-[2rem] text-[2.5rem] cursor-pointer text-teal-700 hover:text-[#779] ' onClick={handleBarsIconClick}>
               <FontAwesomeIcon icon={faBars} width={30} />
 
             </button>
 
             {navbarVisible ? <Navbar /> : null}
           </div>
-         
-          <button type='button' className='flex md:hidden ml-[2rem] text-[2.5rem] cursor-pointer text-teal-700 hover:text-[#779] ' >
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
 
-          <button type='button' className='ml-[2rem] text-[2.5rem] cursor-pointer text-teal-700 hover:text-[#779] '>
-            <FontAwesomeIcon icon={faCartShopping} width={30} />
-          </button>
+          <div>
+            <button type='button' className='flex md:hidden ml-[2.5rem] text-[2.5rem] cursor-pointer text-teal-700 hover:text-[#779] ' >
+              <FontAwesomeIcon icon={faSearch} width={30} />
+            </button>
+          </div>
 
-          <button type='button' className='ml-[2rem] text-[2.5rem] cursor-pointer text-teal-700 hover:text-[#779]'>
-            <FontAwesomeIcon icon={faUser} width={30} />
-          </button>
-        </div>
+          <div>
+            <button type='button' className='ml-[2rem] text-[2.5rem] cursor-pointer text-teal-700 hover:text-[#779] ' onClick={handleCartIconClick}>
+              <FontAwesomeIcon icon={faCartShopping} width={30} />
+            </button>
+            
+            {cartVisible ? <Cart /> : null}
+          </div>
+
+
+          <div>
+            <button type='button' className='ml-[2rem] text-[2.5rem] cursor-pointer text-teal-700 hover:text-[#779]'>
+              <FontAwesomeIcon icon={faUser} width={30} />
+            </button>
+          </div>
+
+        </motion.div>
 
 
       </header>
 
-      {closerVisible ? (<div className='closer' onClick={handleCloser}>
-        <FontAwesomeIcon icon={faTimes} width={30} className="text-teal-700 z-10000" />
-      </div>) : null}
-
-      {navbarVisible ? <Navbar /> : null}
+      <div>
+        {closerVisible ? (<motion.div initial={{ x: 120, rotate: 0 }} animate={{ x: 0, rotate: 360 }} transition={{ duration: .5 }} className='closer' onClick={handleCloser}>
+          <FontAwesomeIcon icon={faTimes} width={30} className="text-teal-700 " />
+        </motion.div>) : null}
+      </div>
     </>
 
   )
