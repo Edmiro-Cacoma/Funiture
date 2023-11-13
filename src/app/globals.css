@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+    -webkit-transition: .2s linear;
+}
+
 
 @layer base {
     html {
@@ -12,4 +28,49 @@
     html::-webkit-scrollbar {
         width: 1rem;
     }
+        html::-webkit-scrollbar-track {
+            background: #fff;
+        }
+    
+        html::-webkit-scrollbar-thumb {
+            background: #244d4d;
+        }
 }
+
+@layer components {
+    nav a {
+        margin: 1rem 0;
+        font-size: 1.5rem;
+        color: #244d4d;
+    }
+
+    nav a:hover {
+
+        color: #779;
+    }
+
+}
+
+@layer utilities {
+    .shadow-custom {
+        box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.5);
+    }
+       
+}
+
+ .closer {
+     position: fixed;
+     top: 1.5rem;
+     right: 2rem;
+     font-size: 5rem;
+     cursor: pointer;
+     z-index: 10000;
+     color: #244d4d;
+     -webkit-animation: rotate .4s linear .4s backwards;
+     animation: rotate .4s linear .4s backwards;
+    
+ }
+
+ .closer:hover {
+     color: #779;
+ }
