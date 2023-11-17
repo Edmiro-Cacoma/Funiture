@@ -33,7 +33,7 @@ const Slideshow = () => {
             </button>
             <>
                 <div className="flex items-center flex-wrap gap-[1.5rem] ">
-                    <motion.div className="flex-1 flex-shrink-1 basis-[10rem]">
+                    <motion.div initial={{ x: -590 }} animate={{ x: 0 }} transition={{ duration: .3 }} className="flex-1 flex-shrink-1 basis-[10rem]">
                         <span className="text-[2rem] text-[#779]">{currentSlide.subtitle}</span>
                         <h3 className="text-[4rem] text-[#244d4d] pt-[0.5rem]">{currentSlide.name}</h3>
                         <p className="text-[1rem] leading-[2] text-[#779] py-[0.5rem]">{currentSlide.description}</p>
@@ -41,9 +41,9 @@ const Slideshow = () => {
                             shop now
                         </Link>
                     </motion.div>
-                    <div className="flex-1 flex-shrink-1  f basis-[10rem]">
+                    <motion.div initial={{ y: -520 }} animate={{ y: 0 }} transition={{ duration: .8 }} className="flex-1 flex-shrink-1  f basis-[10rem]">
                         <Image src={currentSlide.image} alt="" width={548} height={465} />
-                    </div>
+                    </motion.div>
                 </div>
             </>
         </div>

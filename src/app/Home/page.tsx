@@ -8,13 +8,14 @@ import Link from "next/link"
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Slideshow from '@/components/SlideShow'
+import Offers from '@/components/Offers'
 
 
 
 const Header = () => {
 
 
-   
+
   const [closerVisible, setCloserVisible] = useState(false)
   const [navbarVisible, setNavbarVisible] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);
@@ -99,10 +100,18 @@ const Header = () => {
       </div>
 
       <section className='relative z-[1]'>
-       
+
         <div className='py-[2rem] px-[9%]'>
-          <Slideshow slideShow={Slideshow} />
+          <Slideshow />
         </div>
+      </section>
+
+      <section className='py-32'>
+        <div className='py[2rem] px-[9%]'>
+          <Offers />
+        </div>
+
+
       </section>
     </>
 
