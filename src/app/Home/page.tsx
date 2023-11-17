@@ -1,20 +1,20 @@
 "use client"
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faLightbulb, faTimes, faCartShopping, faUser, faSearch, faBars, } from '@fortawesome/free-solid-svg-icons'
 import Navbar from '@/components/Navbar'
 import Cart from '@/components/Cart'
 import Link from "next/link"
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Slideshow from '@/components/SlideShow'
+
 
 
 const Header = () => {
+
+
+   
   const [closerVisible, setCloserVisible] = useState(false)
   const [navbarVisible, setNavbarVisible] = useState(false);
   const [cartVisible, setCartVisible] = useState(false);
@@ -23,13 +23,13 @@ const Header = () => {
   const handleCloser = () => {
     setNavbarVisible(false);
     setCartVisible(false);
-    setCloserVisible(false); // Hide the close icon
+    setCloserVisible(false);
   };
 
   const handleBarsIconClick = () => {
     setNavbarVisible(!navbarVisible);
     setCartVisible(false);
-    setCloserVisible(true); // Show the close icon
+    setCloserVisible(true);
   };
 
   const handleCartIconClick = () => {
@@ -40,7 +40,7 @@ const Header = () => {
 
   return (
     <>
-      <header className=" sticky top-0 left-0 right-0 z-100 flex items-center justify-between gap-10 py-[2rem] px-[9%] bg-[#F6FBF6]">
+      <header className=" sticky top-0 left-0 right-0 z-10 flex items-center justify-between gap-10 py-[2rem] px-[9%] bg-[#F6FBF6]">
 
         <motion.div initial={{ x: -220 }} animate={{ x: 0 }} transition={{ duration: .3 }} >
           <Link href="/" className='text-[1.5rem] font-extrabold text-[#244d4d] flex items-center '>
@@ -76,7 +76,7 @@ const Header = () => {
             <button type='button' className='ml-[2rem] text-[2.5rem] cursor-pointer text-teal-700 hover:text-[#779] ' onClick={handleCartIconClick}>
               <FontAwesomeIcon icon={faCartShopping} width={30} />
             </button>
-            
+
             {cartVisible ? <Cart /> : null}
           </div>
 
@@ -97,6 +97,13 @@ const Header = () => {
           <FontAwesomeIcon icon={faTimes} width={30} className="text-teal-700 " />
         </motion.div>) : null}
       </div>
+
+      <section className='relative z-[1]'>
+       
+        <div className='py-[2rem] px-[9%]'>
+          <Slideshow slideShow={Slideshow} />
+        </div>
+      </section>
     </>
 
   )

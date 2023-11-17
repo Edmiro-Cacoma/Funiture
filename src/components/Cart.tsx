@@ -2,9 +2,10 @@ import React from 'react'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-
+import data from "../../public/data.json"
 
 const Cart = () => {
+
     return (
         <div className='fixed top-0 -right-32 z-1000 bg-white w-[33rem] h-screen p-[2rem] pt-[8rem] overflow-y-scroll active:transition duration-300 ease-linear shadow-custom shopping-cart'>
 
